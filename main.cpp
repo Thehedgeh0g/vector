@@ -10,17 +10,24 @@ std::vector<double> ReadVector()
     double num;
     std::cout << "Введите элементы вектора (разделяйте пробелами, для завершения введите нечисловой символ): ";
 
-    while (std::cin >> num)
-    {
+    while (std::cin >> num) {
         vec.push_back(num);
+        if (std::cin.peek() == '\n') {
+            std::cin.ignore();
+            break;
+        }
     }
 
     return vec;
 }
 
+bool CompareDescending(double a, double b) {
+    return a > b;
+}
 
-void PrintVector(const std::vector<double>& vec)
+void PrintVector(std::vector<double>& vec)
 {
+    std::sort(vec.begin(), vec.end(), CompareDescending);
     for (const auto &num: vec)
     {
         std::cout << num << " ";
