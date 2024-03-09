@@ -8,7 +8,7 @@ std::vector<double> ReadVector()
 {
     std::vector<double> vec;
     double num;
-    std::cout << "Введите элементы вектора (разделяйте пробелами, для завершения введите нечисловой символ): ";
+    std::cout << "Введите элементы вектора: ";
 
     while (std::cin >> num) {
         vec.push_back(num);
