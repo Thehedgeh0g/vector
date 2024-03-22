@@ -2,32 +2,24 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <string>
 #include "ProcessVector/ProcessVector.h"
 
 std::vector<double> ReadVector()
 {
     std::vector<double> vec;
-    double num;
+    std::string numString;
     std::cout << "Введите элементы вектора: ";
-
-    while (std::cin >> num) {
-        vec.push_back(num);
-        if (std::cin.peek() == '\n') {
-            std::cin.ignore();
-            break;
-        }
+    while (std::getline(std::cin, numString, ' ')) {
+        vec.push_back(std::stof(numString));
     }
 
     return vec;
 }
 
-bool CompareDescending(double a, double b) {
-    return a > b;
-}
-
 void PrintVector(std::vector<double>& vec)
 {
-    std::sort(vec.begin(), vec.end(), CompareDescending);
+    std::sort(vec.begin(), vec.end());
     for (const auto &num: vec)
     {
         std::cout << num << " ";
